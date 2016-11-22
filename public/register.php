@@ -25,36 +25,26 @@
 </head>
 <body id="page" class="backimg">
   <header class="w3-center w3-white w3-top w3-card-2" id="home">
-    <a href="intro.php" class="w3-left"><i class="fa fa-home fa-2x w3-margin"></i></a><h2 class="w3-text-green">Ajuda Angola</h2>
+    <h2 class="w3-text-green">Ajuda Angola</h2>
   </header>
   <div class="w3-container w3-padding-0" style="margin-top: 65px">
     <div class="filter w3-padding-0">
       <div class="w3-container w3-padding-128">
-        <form class="w3-col l3 w3-padding-128" name="loginForm" autocomplete="off" action=""  method="post" style="float: none; margin: 0 auto">
-            <input type="text" name="username" placeholder="Email ou telemovel" class="w3-input w3-transparent w3-text-white">
+        <form class="w3-col l3 w3-padding-128" action="" autocomplete="off" method="post" style="float: none; margin: 0 auto">
+            <input type="text" name="name" placeholder="Nome" class="w3-input w3-transparent w3-text-white">
+            <input type="text" name="email" placeholder="Email" class="w3-input w3-transparent w3-text-white w3-margin-top">
             <input type="password" name="password" placeholder="Senha" class="w3-input w3-transparent w3-text-white w3-margin-top">
-            <input type="submit" name="btn-login" value="Iniciar sessão" class="w3-btn w3-margin-top w3-transparent w3-border"><br>
-            <a href="#" class="w3-text-white"><i class="fa fa-refresh"></i> Esqueci a senha</a><b> | </b>
-            <a href="register.php" class="w3-text-white"><i class="fa fa-info"></i> Faça parte agora</a>
-
+            <input type="submit" name="btn-login" value="Salvar conta" class="w3-btn w3-margin-top w3-transparent w3-border"><br>
+            <a href="login.php" class="w3-text-white"><i class="fa fa-info"></i> Já possuo conta</a>
         </form>
       </div>
     </div>
     <div class="w3-bottom w3-center w3-card-4 w3-white w3-padding">
-      <a href="#" class="w3-text-grey w3-hover-text-green">Política de Privacidade</a> <b>|</b>
-      <a href="#" class="w3-text-grey w3-hover-text-green">Termos de uso</a> <b>|</b>
-      <a href="#" class="w3-text-grey w3-hover-text-green">Trabalhe connosco</a> <b>|</b>
-      <a href="#" class="w3-text-grey w3-hover-text-green">Reportar erro</a>
+      <a href="#" class="w3-opacity w3-hover-text-green">Política de Privacidade</a> <b>|</b>
+      <a href="#" class="w3-opacity w3-hover-text-green">Termos de uso</a> <b>|</b>
+      <a href="#" class="w3-opacity w3-hover-text-green">Trabalhe connosco</a> <b>|</b>
+      <a href="#" class="w3-opacity w3-hover-text-green">Reportar erro</a>
     </div>
   </div>
-  <?php
-  if (isset($_REQUEST['continue'])) {
-    $_SESSION['sessaoIntro'] = "true";
-    header("Location:index.php");
-  }else {
-    unset($_SESSION['sessaoIntro']);
-  }
-  ?>
-
 </body>
 </html>

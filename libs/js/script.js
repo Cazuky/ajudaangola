@@ -1,7 +1,4 @@
 $(document).ready(function(){
-
-$('.SlideSlick').slick({autoplay: true, dots: true, infinite: true, arrows: true, fade:true, cssEase: 'linear'});
-
     var formRegister = $('#formRegister');
     //REGISTO DO DOADOR
     formRegister.submit(function(){
@@ -39,7 +36,7 @@ $('.SlideSlick').slick({autoplay: true, dots: true, infinite: true, arrows: true
     loginForm.submit(function(){
       dados = $(this).serialize();
       $.ajax({
-        url: '../controller/auth.php',
+        url: '../app/controller/auth.php',
         type: 'POST',
         data: dados+'&action=login',
         beforeSend:'',
