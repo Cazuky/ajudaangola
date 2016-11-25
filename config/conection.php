@@ -15,6 +15,8 @@ class conexao {
 		$this->banco->Execute('SET character_set_results=utf8');
 	}
 }
+// condiguration Directory;
+define("URLIMAGE", "../libs/images/");
 $con = new conexao();
 
 

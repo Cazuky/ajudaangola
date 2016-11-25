@@ -1,176 +1,121 @@
-
-<?php
-session_start();
-if (!$_SESSION['sessaoIntro']) {
-  header("Location: intro.php");
-}
-else{
-require_once("../config/conexao.php");
-$geral = new conexao();
-$sql ="SELECT doacao.*, doador.*, categoria.*, doacao.ID as doaid FROM doacao
-JOIN categoria ON categoria.id = doacao.categoria_id
-JOIN doador ON doador.id = doacao.doador_id";
-$ExecuteDoar = $geral->banco->Execute($sql);
-$sqlCat = "SELECT * FROM categoria";
-$executeCat = $geral->banco->Execute($sqlCat);
-?>
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Doar</title>
-  <link rel="shortcut icon" href="../images/favicon.png">
-  <link rel="stylesheet" href="../css/w3.css" media="all">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <link rel="stylesheet" href="../css/hover.css" media="all">
-  <link rel="stylesheet" href="../css/font-awesome.css" media="screen" title="no title">
-  <link rel="stylesheet" type="text/css" href="../css/slick/slick.css"/>
-  <link rel="stylesheet" type="text/css" href="../css/slick/slick-theme.css"/>
-  <link rel="stylesheet" href="../css/custom.css" media="all">
-  <script type="text/javascript" src="../js/jquery.js"></script>
-  <script type="text/javascript" src="../css/slick/slick.min.js"></script>
-  <script type="text/javascript" src="../js/script.js"></script>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-86967704-1', 'auto');
-    ga('send', 'pageview');
-
-  </script>
+  <title>AjudaAngola</title>
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="stylesheet" href="../libs/css/w3.css" media="all">
+  <link rel="stylesheet" href="../libs/css/font-awesome.css" media="screen" title="no title">
+  <!-- <link rel="stylesheet" href="../css/carrousel/style3.css" media="all"> -->
   <style media="screen">
   body{margin: 0; paddin: 0; box-sizing: border-box}
   input{outline: none}
-  .backimg {background: url('img/back.jpg') no-repeat}
-  .filter {width: 100%; height: 100%; position: fixed; background: rgba(0, 0, 0, 0.47)}
+  .backimg {margin-top: -10px; background: url('../libs/images/01.jpg') no-repeat; background-size: 100% auto; background-clip: border-box; background-position: top;}
+  .backimg2 {margin-top: 0; background: url('../libs/images/contact.jpg') no-repeat; background-size: 100% 100%; background-clip: border-box; background-position: top;}
+
+  .filter {width: 100%; height: auto ; position: static; background: rgba(0, 0, 0, 0.47)}
+
+  .backgreen{background: rgba(46, 147, 25, 0.47)}
+  .w3-green-strong{background: rgb(46, 147, 25)!important}
+  .backgwhite{background: rgba(255, 255, 255, 0.47)}
   a{text-decoration: none}
   .cursor-pointer {cursor: pointer}
   .height{min-height: 15em; height: auto}
+  textarea{outline: none}
+  ::-webkit-scrollbar {
+    width: 0.5em;
+}
 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 108, 11, 1);
+}
   </style>
 </head>
-<body>
-  <!-- Sidenav -->
-  <nav class="w3-sidenav w3-white w3-card-2 w3-animate-top w3-center" style="display:none;padding-top:150px" id="mySidenav">
-    <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-right w3-display-topright">
-      <i class="fa fa-remove w3-xlarge"></i>
-    </a>
-    <!-- Footer -->
-    <a href="login.php" class="w3-btn w3-margin w3-blue w3-padding">Publicar agora</a>
-    <div class="w3-center">
-      <a href="#" class="w3-show-inline-block"><i class="fa fa-facebook"></i></a>
-      <a href="#" class="w3-show-inline-block"><i class="fa fa-twitter"></i></a>
-      <a href="#" class="w3-show-inline-block"><i class="fa fa-youtube"></i></a>
-    </div>
-    <div class="w3-clear">
-
-    </div>
-    <footer class="w3-container w3-padding-16 w3-center">
-      <p>Powered by <a href="javascript:void(0)" target="_blank">VenusDEV.Inc &copy; <?= date("Y") ?></a></p>
-    </footer>
-  </nav>
-  <!-- CATEGORIAS -->
-  <nav class="w3-sidenav w3-white w3-card-2 w3-animate-top w3-center" style="width:90%; display:none;padding-top:20px" id="sideNavCategory">
-    <a href="javascript:void(0)" onclick="w3_closecategory()" class="w3-closenav w3-display-topright">
-      <i class="fa fa-remove w3-xlarge"></i>
-    </a>
-    <ul class="w3-ul w3-margin-0 w3-left">
-      <?php while($regCat = $executeCat->FetchNextObject()): ?>
-      <li class="w3-border-0"><a href="?page=desapego&action=category&id=<?= $regCat->ID?>" class="w3-left"><?= $regCat->CATEGORIA?></a></li>
-    <?php endwhile; ?>
-    </ul>
-  </nav>
-  <!-- FIM CATEGORIAS -->
-  <!-- Top container -->
-  <div class="w3-container w3-top w3-indigo w3-large w3-padding" style="z-index:4">
-    <button class="w3-btn w3-transparent w3-right w3-hide-large w3-padding-0 w3-hover-text-grey" onclick="w3_open();"><i class="fa fa-bars fa-2x"></i></button>
-    <a href="index.php">    <img src="../images/logo.png" class="w3-image w3-margin-left" alt="" width="50em"/></a>
-  </div>
-  <div class="w3-main w3-padding-0" style=" margin-top:5em">
-    <div class="w3-bottom w3-padding w3-light-grey w3-card-16">
-      <a href="javascript:void(0)" onclick="w3_openCategory()" class="w3-left"><i class="fa fa-list w3-text-blue fa-2x"></i></a>
-      <a href="javascript:void(0)" onclick="document.getElementById('searchContainer').style.display='block'; document.getElementById('searchInput').focus()" class="w3-right"><i class="fa fa-search w3-text-blue fa-2x"></i></a>
-    </div>
-    <div class="w3-container w3-light-grey w3-padding-12">
-      <div class="w3-container w3-margin-bottom w3-padding-0 w3-margin-0" id="searchContainer" style="display:none">
-        <a href="javascript:void(0)" onclick="document.getElementById('searchContainer').style.display='none'" class="w3-closebtn w3-text-blue w3-cursor-pointer" style="cursor:pointer"><i class="fa fa-close"></i></a><br>
-        <form class="" action="" method="post">
-          <input type="text" class="w3-input" name="search" value="" placeholder="o que procuras ?" id="searchInput">
-          <input type="hidden" name="page" value="desapego">
-          <input type="hidden" name="action" value="searchmobile">
-        </form>
-      </div>
-      <?php
-      $pagina = $_REQUEST['page'];
-      $paginas = array("desapego");
-      if (in_array($pagina, $paginas)) {
-        require_once("../controller/".$pagina.".php");
-      }else{
-        require_once("../views/m.list.pub.php");
-      }
-     ?>
-    </div>
-
-    <div id="id01" class="w3-modal">
-      <div class="w3-modal-content w3-transparent">
-        <div class="w3-container">
-          <a href="javascript:void(0)" onclick="document.getElementById('id01').style.display='none'" class="w3-closebtn w3-text-white w3-cursor-pointer" style="cursor:pointer"><i class="fa fa-close"></i></a><br>
-          <form class=" w3-container  w3-animate-left" action="" autocomplete="off" method="get" style="float:none; margin: 0 auto;">
-            <div class=" w3-twothird w3-padding">
-              <input class="w3-input w3-padding-large w3-border" type="text" name="q" placeholder="O que procuras?" style="outline:none">
-              <input type="hidden" name="p" value="doar">
-              <input type="hidden" name="a" value="search">
-            </div>
-            <div class=" w3-container w3-quarter w3-padding">
-              <input  class="w3-btn-block w3-border-0 w3-yellow w3-text-blue w3-padding-large w3-border w3-border-blue w3-hover-yellow"type="submit" name="btn-seacrh" value="Procurar"></input>
-            </div>
-          </form>
+<body id="page" class="backimg">
+    <div class="filter backimg">
+      <div class="w3-col l3 s12" style="float: none; margin: 0 auto">
+        <h1 class="w3-center w3-padding-128 w3-text-white">
+          <img src="../libs/images/logo.png"  alt="" style="width: 60px; display: block; margin: 0 auto" />
+          <span class="w3-text-light-green">
+          AjudaAngola</span> é o seu primeiro guia de primeiros socorros</h1>
+        <a href="" class="w3-btn-block  backgreen w3-border w3-padding">Saiba mais <i class="fa fa-arrow-down"></i></a>
+        <a href="explorer.php" class="w3-btn-block w3-margin-top w3-white w3-border w3-border-green w3-padding">Explorar <i class="fa fa-cogs"></i></a>
+        <div class="w3-container w3-center">
+            <a href="login.php" class="w3-text-white w3-opacity">Iniciar Sessão</a> <b class="w3-text-green">|</b>
+            <a href="register.php" class="w3-text-white w3-opacity">Não possuo conta</a>
         </div>
       </div>
     </div>
-  </div>
-  <script>
-  // Get the Sidenav
-  var mySidenav = document.getElementById("mySidenav");
-  var sideNavCategory = document.getElementById("sideNavCategory");
-
-  // Get the DIV with overlay effect
-  var overlayBg = document.getElementById("myOverlay");
-
-  // Toggle between showing and hiding the sidenav, and add overlay effect
-  function w3_open() {
-    if (mySidenav.style.display === 'block') {
-      mySidenav.style.display = 'none';
-      overlayBg.style.display = "none";
-    } else {
-      mySidenav.style.display = 'block';
-      overlayBg.style.display = "block";
-    }
-  }
-  function w3_openCategory() {
-    if (sideNavCategory.style.display === 'block') {
-      sideNavCategory.style.display = 'none';
-    } else {
-      sideNavCategory.style.display = 'block';
-    }
-  }
-
-  // Close the sidenav with the close button
-  function w3_close() {
-    mySidenav.style.display = "none";
-    overlayBg.style.display = "none";
-  }
-  function w3_closecategory() {
-    sideNavCategory.style.display = "none";
-  }
-  $(function(){
-    var searchContainer = $("#searchContainer");
-  })
-  </script>
+    <div class="w3-container w3-green-strong w3-padding-64" style=" ">
+      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
+        <img src="../libs/images/logo.png" alt="" width="100" />
+        <h3 class="w3-text-black w3-opacity">Exactamente o esperado</h3>
+        <p class="w3-text-sand">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
+        <img src="../libs/images/logo.png" class="" alt="" width="100" />
+        <h3 class="w3-text-black w3-opacity">Fácil de usar</h3>
+        <p class="w3-text-sand">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
+        <img src="../libs/images/logo.png" alt="" width="100" />
+        <h3 class="w3-text-black w3-opacity">Socialmente irresistível</h3>
+        <p class="w3-text-sand">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+    <div class="w3-container" style="margin-top: 10px">
+        <h1 class="w3-text-green w3-center">Nossos Parceiros</h1>
+        <div class="w3-container w3-center">
+          <img src="<?= URLIMAGE?>unia.png" alt="" width="110" class="" style="padding: 1em" />
+          <img src="<?= URLIMAGE?>kanjaya.png" alt="" width="110" class="" style="padding: 1em" />
+          <img src="<?= URLIMAGE?>firme.png" alt="" width="110" class="" style="padding: 1em" />
+          <img src="<?= URLIMAGE?>vandjalogo.png" alt="" width="110" class="" style="padding: 1em" />
+          <img src="<?= URLIMAGE?>vivasapatos.png" alt="" width="140" class="" style="padding: 1em" />
+          <img src="<?= URLIMAGE?>logo.png" alt="" width="90" class="" style="padding: 1em" />
+        </div>
+      </div>
+    </div>
+    <div class="w3-container backimg2 w3-padding-0">
+      <div class="filter">
+        <h1 class="w3-text-green w3-center">Contacte-nos</h1>
+        <div class="w3-container">
+          <div class="w3-half w3-padding-128">
+            <h3 class="w3-text-white"><i class="fa fa-map-marker w3-text-white"></i> Std. Catete, Viana - Luanda</h3>
+            <h3 class="w3-text-white"><i class="fa fa-phone w3-text-white"></i> (+244) 222 321 619</h3>
+            <a href="#"><i class="fa fa-facebook w3-xlarge w3-text-blue "></i></a>
+            <a href="#"><i class="fa fa-github w3-xlarge w3-text-green w3-padding"></i></a>
+            <a href="#"><i class="fa fa-youtube w3-xlarge w3-text-red"></i></a>
+          </div>
+        <div class="w3-half">
+          <form class="w3-form w3-transparent" action="index.html" method="post">
+            <input type="text" class="w3-input w3-transparent w3-text-white" name="name" value="" placeholder="Digite o nome"><br>
+            <input type="email" class="w3-input w3-transparent w3-text-white" name="email" value="" placeholder="Digite o email"><br>
+            <textarea name="content" class="w3-input w3-transparent w3-text-white" rows="8" cols="40" placeholder="Deixe a sua mensagem" style="resize: none"></textarea>
+            <input type="submit" name="btn-contact" value="Enviar agora" class="w3-btn w3-margin-top w3-transparent w3-border ">
+          </form>
+        </div>
+        </div>
+      </div>
+    </div><br><br><br>
+    <div class="w3-bottom w3-center w3-card-4 w3-white w3-padding">
+      <a href="#" class="w3-opacity w3-hover-text-green">Política de Privacidade</a> <b>|</b>
+      <a href="#" class="w3-opacity w3-hover-text-green">Termos de uso</a> <b>|</b>
+      <a href="#" class="w3-opacity w3-hover-text-green">Trabalhe connosco</a> <b>|</b>
+      <a href="#" class="w3-opacity w3-hover-text-green">Reportar erro</a>
+    </div>
 </body>
 </html>
-<?php } ?>

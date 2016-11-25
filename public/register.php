@@ -30,10 +30,13 @@
   <div class="w3-container w3-padding-0" style="margin-top: 65px">
     <div class="filter w3-padding-0">
       <div class="w3-container w3-padding-128">
-        <form class="w3-col l3 w3-padding-128" action="" autocomplete="off" method="post" style="float: none; margin: 0 auto">
+        <form class="w3-col l3 w3-padding-16" action="" name="formRegister" id="formRegister" autocomplete="off" method="post" style="float: none; margin: 0 auto">
+          <p id="resposta" class="w3-padding w3-border w3-transparent w3-text-white" style="display: none"></p>
+          <p class="w3-text-white w3-xlarge"><i class="fa fa-user"> Cadastrar-se </i></p>
             <input type="text" name="name" placeholder="Nome" class="w3-input w3-transparent w3-text-white">
             <input type="text" name="email" placeholder="Email" class="w3-input w3-transparent w3-text-white w3-margin-top">
             <input type="password" name="password" placeholder="Senha" class="w3-input w3-transparent w3-text-white w3-margin-top">
+            <input type="tel" name="phone" placeholder="Telemóvel" class="w3-input w3-transparent w3-text-white w3-margin-top">
             <input type="submit" name="btn-login" value="Salvar conta" class="w3-btn w3-margin-top w3-transparent w3-border"><br>
             <a href="login.php" class="w3-text-white"><i class="fa fa-info"></i> Já possuo conta</a>
         </form>
