@@ -1,0 +1,10 @@
+<?php
+session_start();
+  unset($_SESSION['sessionUserID']);
+  unset($_SESSION['sessionUserName']);
+  unset($_SESSION['sessionUserEmail']);
+  unset($_SESSION['sessionUserPhone']);
+  unset($_SESSION['sessionUserPhone']);
+session_destroy();
+header("Location:../");
+ ?>

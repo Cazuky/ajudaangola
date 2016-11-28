@@ -1,27 +1,20 @@
 <?php
 session_start();
-class  authModel {
+class  postModel {
   var $register;
   var $execute;
   var $resultado;
-  function authModel (){
+  function postModel (){
     $this->con = new conexao ();
   }
   function register($campos, $valores){
-    $sql = "INSERT INTO usuarios ($campos) VALUES($valores)";
+    $sql = "INSERT INTO posts ($campos) VALUES($valores)";
     if($this->resultado = $this->con->banco->Execute($sql)){
-      $sqlLast = "SELECT MAX(userid) AS userid FROM usuarios";
-      $this->execute = $this->con->banco->Execute($sqlLast);
-      if ($this->register = $this->execute->FetchNextObject()) {
-        $_SESSION['sessionUserID'] = $this->register->USERID;
         echo 111;
       }
       else {
         echo mysql_error();
       }
-    }else {
-      echo mysql_errno();
-    }
   }
   function listarDoador(){
     $sql = "SELECT * FROM doador";

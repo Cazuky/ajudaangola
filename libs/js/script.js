@@ -4,7 +4,7 @@ $(document).ready(function(){
     formRegister.submit(function(){
       dados = $(this).serialize();
       $.ajax({
-        url: '../app/controller/auth.php',
+        url: 'app/controller/auth.php',
         type: 'POST',
         data: dados+"&action=register",
         beforeSend: function(){
@@ -35,16 +35,16 @@ $(document).ready(function(){
     loginForm.submit(function(){
       dados = $(this).serialize();
       $.ajax({
-        url: '../app/controller/auth.php',
+        url: 'app/controller/auth.php',
         type: 'POST',
         data: dados+'&action=login',
         beforeSend:'',
         error: '',
         success: function(retorno){
-          if (retorno===0) {
-              $('#resposta').empty().html("<p>As credências de login não correspondem</p>").fadeIn().delay(2000).fadeOut('fast');
+          if (retorno==0) {
+              $('#resposta').empty().html('<p> <i class="fa fa-info"></i> As credências de login não correspondem</p>').fadeIn().delay(2000).fadeOut('fast');
           }else {
-            window.location.href="user/";
+            window.location.href="profile/";
           }
         }
       });
@@ -63,7 +63,7 @@ $(document).ready(function(){
         beforeSend:'',
         error: '',
         success: function(retorno){
-          if (retorno===0) {
+          if (retorno==0) {
               $('#resposta').empty().html("<p>As credências de login não correspondem</p>").fadeIn().delay(2000).fadeOut('fast');
           }else {
             window.location.href="index.php";
@@ -123,11 +123,11 @@ var formStatus  = $("form[name='formStatus']");
       $.ajax({
         url: '../../app/controller/post.php',
         type: 'POST',
-        data: dados,
+        data: dados+"&p=post&action=save",
         beforeSend:'',
         error: '',
         success: function(retorno){
-
+          alert(retorno);
         }
     });
     return false;

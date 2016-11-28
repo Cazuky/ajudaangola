@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php
+session_start();
+define('URLIMAGE', 'libs/images/');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +9,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AjudaAngola</title>
   <link rel="shortcut icon" href="favicon.png">
-  <link rel="stylesheet" href="../libs/css/w3.css" media="all">
-  <link rel="stylesheet" href="../libs/css/font-awesome.css" media="screen" title="no title">
-  <!-- <link rel="stylesheet" href="../css/carrousel/style3.css" media="all"> -->
+  <link rel="stylesheet" href="libs/css/w3.css" media="all">
+  <link rel="stylesheet" href="libs/css/font-awesome.css" media="screen" title="no title">
+  <!-- <link rel="stylesheet" href="css/carrousel/style3.css" media="all"> -->
   <style media="screen">
   body{margin: 0; paddin: 0; box-sizing: border-box}
   input{outline: none}
-  .backimg {margin-top: -10px; background: url('../libs/images/01.jpg') no-repeat; background-size: 100% auto; background-clip: border-box; background-position: top;}
-  .backimg2 {margin-top: 0; background: url('../libs/images/contact.jpg') no-repeat; background-size: 100% 100%; background-clip: border-box; background-position: top;}
+  .backimg {margin-top: -10px; background: url('libs/images/01.jpg') no-repeat; background-size: 100% auto; background-clip: border-box; background-position: top;}
+  .backimg2 {margin-top: 0; background: url('libs/images/contact.jpg') no-repeat; background-size: 100% 100%; background-clip: border-box; background-position: top;}
 
   .filter {width: 100%; height: auto ; position: static; background: rgba(0, 0, 0, 0.47)}
 
@@ -27,12 +30,10 @@
   ::-webkit-scrollbar {
     width: 0.5em;
 }
-
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px rgba(0, 108, 11, 1);
@@ -41,13 +42,13 @@
 </head>
 <body id="page" class="backimg">
     <div class="filter backimg">
-      <div class="w3-col l3 s12" style="float: none; margin: 0 auto">
+      <div class="w3-col l3 s12 w3-padding-64" style="float: none; margin: 0 auto">
         <h1 class="w3-center w3-padding-128 w3-text-white">
-          <img src="../libs/images/logo.png"  alt="" style="width: 60px; display: block; margin: 0 auto" />
+          <!-- <img src="libs/images/logo.png"  alt="" style="width: 60px; display: block; margin: 0 auto" /> -->
           <span class="w3-text-light-green">
           AjudaAngola</span> é o seu primeiro guia de primeiros socorros</h1>
         <a href="" class="w3-btn-block  backgreen w3-border w3-padding">Saiba mais <i class="fa fa-arrow-down"></i></a>
-        <a href="explorer.php" class="w3-btn-block w3-margin-top w3-white w3-border w3-border-green w3-padding">Explorar <i class="fa fa-cogs"></i></a>
+        <a href="timeline/" class="w3-btn-block w3-margin-top w3-white w3-border w3-border-green w3-padding">Explorar <i class="fa fa-cogs"></i></a>
         <div class="w3-container w3-center">
             <a href="login.php" class="w3-text-white w3-opacity">Iniciar Sessão</a> <b class="w3-text-green">|</b>
             <a href="register.php" class="w3-text-white w3-opacity">Não possuo conta</a>
@@ -56,21 +57,21 @@
     </div>
     <div class="w3-container w3-green-strong w3-padding-64" style=" ">
       <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
-        <img src="../libs/images/logo.png" alt="" width="100" />
+        <img src="libs/images/logo.png" alt="" width="100" />
         <h3 class="w3-text-black w3-opacity">Exactamente o esperado</h3>
         <p class="w3-text-sand">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </div>
       <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
-        <img src="../libs/images/logo.png" class="" alt="" width="100" />
+        <img src="libs/images/logo.png" class="" alt="" width="100" />
         <h3 class="w3-text-black w3-opacity">Fácil de usar</h3>
         <p class="w3-text-sand">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </div>
       <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
-        <img src="../libs/images/logo.png" alt="" width="100" />
+        <img src="libs/images/logo.png" alt="" width="100" />
         <h3 class="w3-text-black w3-opacity">Socialmente irresistível</h3>
         <p class="w3-text-sand">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

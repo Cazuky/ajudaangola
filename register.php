@@ -6,15 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AjudaAngola</title>
   <link rel="shortcut icon" href="favicon.png">
-  <link rel="stylesheet" href="../libs/css/w3.css" media="all">
-  <link rel="stylesheet" href="../libs/css/font-awesome.css" media="screen" title="no title">
-  <script type="text/javascript" src="../libs/js/jquery.js"></script>
-  <script type="text/javascript" src="../libs/js/script.js"></script>
-  <!-- <link rel="stylesheet" href="../css/carrousel/style3.css" media="all"> -->
+  <link rel="stylesheet" href="libs/css/w3.css" media="all">
+  <link rel="stylesheet" href="libs/css/font-awesome.css" media="screen" title="no title">
+  <script type="text/javascript" src="libs/js/jquery.js"></script>
+  <script type="text/javascript" src="libs/js/script.js"></script>
+  <!-- <link rel="stylesheet" href="css/carrousel/style3.css" media="all"> -->
   <style media="screen">
   body{margin: 0; paddin: 0; box-sizing: border-box}
   input{outline: none}
-  .backimg {background: url('../libs/images/03.jpg') no-repeat; background-size: cover;}
+  .backimg {background: url('libs/images/03.jpg') no-repeat; background-size: cover;}
   .filter {width: 100%; height: 100%; position: fixed; background: rgba(0, 0, 0, 0.47)}
   .backgreen{background: rgba(117, 159, 11, 0.47)}
   .backgwhite{background: rgba(255, 255, 255, 0.47)}
