@@ -21,7 +21,7 @@ define('URLIMAGE', 'libs/images/');
   .filter {width: 100%; height: auto ; position: static; background: rgba(0, 0, 0, 0.47)}
 
   .backgreen{background: rgba(46, 147, 25, 0.47)}
-  .w3-green-strong{background: rgb(46, 147, 25)!important}
+  .w3-green-strong{background: rgb(23, 102, 6)!important}
   .backgwhite{background: rgba(255, 255, 255, 0.47)}
   a{text-decoration: none}
   .cursor-pointer {cursor: pointer}
@@ -57,24 +57,24 @@ define('URLIMAGE', 'libs/images/');
     </div>
     <div class="w3-container w3-green-strong w3-padding-64" style=" ">
       <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
-        <img src="libs/images/logo.png" alt="" width="100" />
+        <img src="libs/images/target.png" alt="" width="100" />
         <h3 class="w3-text-black w3-opacity">Exactamente o esperado</h3>
         <p class="w3-text-sand">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+          Encontre e exponha dicas sobre as patologias mais frequentes em Angola. Também ajudamos-lhe a encontrar rapidamente os medicamentos para que comece a cumprir a sua medicação mais rápido possivel </p>
       </div>
-      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
-        <img src="libs/images/logo.png" class="" alt="" width="100" />
+      <div class="w3-third w3-center"style="padding:2.8em 1em">
+        <img src="libs/images/clock.png" class="" alt="" width="110" />
         <h3 class="w3-text-black w3-opacity">Fácil de usar</h3>
         <p class="w3-text-sand">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <span>AjudaAngola</span> conta com uma interface bastante amigável para ajudá-lo a cobrir as suas necessidades com êxito e curto periódo de tempo.
         </p>
       </div>
-      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
-        <img src="libs/images/logo.png" alt="" width="100" />
+      <div class="w3-third w3-center"style="padding: 3.3em 1em">
+        <img src="libs/images/social.png" alt="" width="100" />
         <h3 class="w3-text-black w3-opacity">Socialmente irresistível</h3>
         <p class="w3-text-sand">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <span>AjudaAngola</span> é o primeiro website angolano que vai ajudá-lo a colmar diversas questões de saúde no seu dia-a-dia.
+
         </p>
       </div>
     </div>
@@ -95,8 +95,11 @@ define('URLIMAGE', 'libs/images/');
         <h1 class="w3-text-green w3-center">Contacte-nos</h1>
         <div class="w3-container">
           <div class="w3-half w3-padding-128">
-            <h3 class="w3-text-white"><i class="fa fa-map-marker w3-text-white"></i> Std. Catete, Viana - Luanda</h3>
-            <h3 class="w3-text-white"><i class="fa fa-phone w3-text-white"></i> (+244) 222 321 619</h3>
+            <h3 class="w3-text-white"><i class="fa fa-map-marker w3-text-white"></i> <span class="w3-large">Viana KM 12 Std. do Kalemba  Centro Comercial Mária Luisa 2ºA.</span></h3>
+            <h3 class="w3-text-white"><i class="fa fa-phone w3-text-white"></i> (+244) 924069083 / 915396342  </h3>
+            <h3 class="w3-text-white"><i class="fa fa-envelope w3-text-white"></i> geral.cmgt@outlook.com
+ </h3>
+
             <a href="#"><i class="fa fa-facebook w3-xlarge w3-text-blue "></i></a>
             <a href="#"><i class="fa fa-github w3-xlarge w3-text-green w3-padding"></i></a>
             <a href="#"><i class="fa fa-youtube w3-xlarge w3-text-red"></i></a>
