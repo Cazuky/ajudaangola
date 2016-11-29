@@ -1,4 +1,5 @@
 <?php
+sleep(2);
 session_start();
 require_once("../../config/conection.php");
 require_once("../model/auth.php");

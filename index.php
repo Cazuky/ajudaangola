@@ -47,7 +47,7 @@ define('URLIMAGE', 'libs/images/');
           <!-- <img src="libs/images/logo.png"  alt="" style="width: 60px; display: block; margin: 0 auto" /> -->
           <span class="w3-text-light-green">
           AjudaAngola</span> é o seu primeiro guia de primeiros socorros</h1>
-        <a href="" class="w3-btn-block  backgreen w3-border w3-padding">Saiba mais <i class="fa fa-arrow-down"></i></a>
+        <a href="#more" class="w3-btn-block  backgreen w3-border w3-padding">Saiba mais <i class="fa fa-arrow-down"></i></a>
         <a href="timeline/" class="w3-btn-block w3-margin-top w3-white w3-border w3-border-green w3-padding">Explorar <i class="fa fa-cogs"></i></a>
         <div class="w3-container w3-center">
             <a href="login.php" class="w3-text-white w3-opacity">Iniciar Sessão</a> <b class="w3-text-green">|</b>
@@ -56,7 +56,7 @@ define('URLIMAGE', 'libs/images/');
       </div>
     </div>
     <div class="w3-container w3-green-strong w3-padding-64" style=" ">
-      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em">
+      <div class="w3-third w3-center w3-padding-32"style="padding: 0 1em" id="more">
         <img src="libs/images/target.png" alt="" width="100" />
         <h3 class="w3-text-black w3-opacity">Exactamente o esperado</h3>
         <p class="w3-text-sand">
@@ -66,7 +66,7 @@ define('URLIMAGE', 'libs/images/');
         <img src="libs/images/clock.png" class="" alt="" width="110" />
         <h3 class="w3-text-black w3-opacity">Fácil de usar</h3>
         <p class="w3-text-sand">
-          <span>AjudaAngola</span> conta com uma interface bastante amigável para ajudá-lo a cobrir as suas necessidades com êxito e curto periódo de tempo.
+          <span class="w3-text-light-green">AjudaAngola</span> conta com uma interface bastante amigável para ajudá-lo a cobrir as suas necessidades com êxito e curto periódo de tempo.
         </p>
       </div>
       <div class="w3-third w3-center"style="padding: 3.3em 1em">

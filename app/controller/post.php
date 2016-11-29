@@ -1,9 +1,8 @@
 <?php
 session_start();
-require_once("../../config/conection.php");
-require_once("../model/post.php");
-$action = mysql_real_escape_string($_REQUEST['action']);
-
+require_once("../app/model/post.php");
+$action = mysql_real_escape_string($_REQUEST['a']);
+$user = $_SESSION['sessionUserID'];
 $execucao = new postModel;
 
 if ($action=="save"){
@@ -22,6 +21,10 @@ if ($action =="register") {
     //print_r($c);
     $valores = '"'.implode('","', array_values($c)).'"';
     $execucao->register($campos, $valores);
+}
+if ($action=="mypost") {
+	$execucao->myPost($user);
+	require_once("../app/view/mypost.php");
 }
 
 

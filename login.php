@@ -42,7 +42,6 @@ if (isset($_SESSION['sessionUserID']) && !empty($_SESSION['sessionUserID'])) {
             <a href="#" class="w3-text-white"><i class="fa fa-refresh"></i> Esqueci a senha</a><b> | </b>
             <a href="register.php" class="w3-text-white"><i class="fa fa-info"></i> Faça parte agora</a>
         </form>
-        <h1><?= $_SESSION['sessionUserID']?></h1>
       </div>
     </div>
     <div class="w3-bottom w3-center w3-card-4 w3-white w3-padding">

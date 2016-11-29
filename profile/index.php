@@ -83,38 +83,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card-2 w3-round">
           -<a href="" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus interesses</a>
           <a href=""  class="w3-btn-block w3-white w3-left-align"><i class="fa fa-comment fa-fw w3-margin-right"></i> Últimos comentários</a>
-          <a href="" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-list fa-fw w3-margin-right"></i> Ultimos posts</a>
+          <a href="?p=post&a=mypost" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-list fa-fw w3-margin-right"></i> Ultimos posts</a>
       </div>
       <br>
-      <!-- Interests -->
-      <!-- <div class="w3-card-2 w3-round w3-white w3-hide-small">
-        <div class="w3-container">
-          <p>Interests</p>
-          <p>
-            <span class="w3-tag w3-small w3-theme-d5">News</span>
-            <span class="w3-tag w3-small w3-theme-d4">W3Schools</span>
-            <span class="w3-tag w3-small w3-theme-d3">Labels</span>
-            <span class="w3-tag w3-small w3-green">Games</span>
-            <span class="w3-tag w3-small w3-theme-d1">Friends</span>
-            <span class="w3-tag w3-small w3-theme">Games</span>
-            <span class="w3-tag w3-small w3-theme-l1">Friends</span>
-            <span class="w3-tag w3-small w3-theme-l2">Food</span>
-            <span class="w3-tag w3-small w3-theme-l3">Design</span>
-            <span class="w3-tag w3-small w3-theme-l4">Art</span>
-            <span class="w3-tag w3-small w3-theme-l5">Photos</span>
-          </p>
-        </div>
-      </div>
-      <br> -->
-      <!-- Alert Box -->
-      <!-- <div class="w3-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-        <span onclick="this.parentElement.style.display='none'" class="w3-hover-text-grey w3-closebtn">
-          <i class="fa fa-remove"></i>
-        </span>
-        <p><strong>Hey!</strong></p>
-        <p>People are looking at your profile. Find out who.</p>
-      </div> -->
-
     <!-- End Left Column -->
     </div>
 
@@ -135,26 +106,37 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       </div>
 
     <div class="">
-      <?php while($geral->postRegister = $geral->resultado->FetchNextObject()):?>
-      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
-        <img src="<?= URLBASEFOTO."".$geral->postRegister->USERFOTO?>" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity"><?= TimeRegister($geral->postRegister->POSTDATA)?></span>
-        <h6><?= $geral->postRegister->USERNAME?></h6><br>
-        <hr class="w3-clear">
-        <p class="w3-xlarge"><?= $geral->postRegister->POSTCONTENT?></p>
-        <form action="form.asp" class="">
-          <div class="w3-row w3-section">
-            <div class="w3-col" style="width:50px"><img src="<?= URLBASEFOTO."".$geral->register->USERFOTO?>" class="w3-circle" width="40px" alt=""></i></div>
-              <div class="w3-rest">
-                <input class="w3-input w3-border" name="first" type="text" placeholder="comentar publicação">
+      <?php
+        $page = mysql_real_escape_string($_REQUEST['p']);
+        $pages = array("post");
+        if (in_array($page,$pages)) {
+            require_once('../app/controller/'.$page.'.php');
+        }
+        else {
+          while($geral->postRegister = $geral->resultado->FetchNextObject()): ?>
+          <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+            <img src="<?= URLBASEFOTO."".$geral->postRegister->USERFOTO?>" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            <span class="w3-right w3-opacity"><?= TimeRegister($geral->postRegister->POSTDATA)?></span>
+            <h6><?= $geral->postRegister->USERNAME?></h6><br>
+            <hr class="w3-clear">
+            <p class="w3-xlarge"><?= $geral->postRegister->POSTCONTENT?></p>
+            <form action="form.asp" class="">
+              <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><img src="<?= URLBASEFOTO."".$geral->register->USERFOTO?>" class="w3-circle" width="40px" alt=""></i></div>
+                  <div class="w3-rest">
+                    <input type="hidden" name="" value="">
+                    <input class="w3-input w3-border" name="first" type="text" placeholder="comentar publicação">
+                  </div>
               </div>
-          </div>
-        </form>
+            </form>
 
-        <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i></button>
-        <button type="button" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  Comentários</button>
-      </div>
-      <?php endwhile; ?>
+            <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i></button>
+            <button type="button" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  Comentários</button>
+          </div>
+        <?php
+        endwhile;
+        }
+       ?>
     </div>
     <!-- End Middle Column -->
     </div>

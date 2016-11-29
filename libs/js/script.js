@@ -8,7 +8,7 @@ $(document).ready(function(){
         type: 'POST',
         data: dados+"&action=register",
         beforeSend: function(){
-          $('#resposta').empty().html('<img src="../libs/images/load.gif">').fadeIn("fast");
+          $('#resposta').empty().html('<img src="libs/images/load.gif">').fadeIn("fast");
         },
         error: '',
         success: function(resposta){
@@ -38,7 +38,9 @@ $(document).ready(function(){
         url: 'app/controller/auth.php',
         type: 'POST',
         data: dados+'&action=login',
-        beforeSend:'',
+        beforeSend:function(){
+          $('#resposta').empty().html('<img src="libs/images/load.gif"> Agurade ...').fadeIn("fast");
+        },
         error: '',
         success: function(retorno){
           if (retorno==0) {
@@ -99,35 +101,35 @@ $(document).ready(function(){
   $("#uploadForm").on('change',(function(e) {
   		e.preventDefault();
   		$.ajax({
-        url: "../config/uploadAJAX.php",
+        url: "config/uploadAJAX.php",
   			type: "POST",
   			data:  new FormData(this),
   			contentType: false,
       	cache: false,
   			processData:false,
+        error:'',
+        beforeSend:function(){
+          $('#resposta').empty().html('<img src="libs/images/load.gif"> Agurade ...').fadeIn("fast");
+        },
   			success: function(data)
   		    {
   					$('#uploadView').empty().html(data);
             $('#skip').empty().html("Continuar >>");
-  		    },
-  		  	error: function()
-  	    	{
-  	    	}
+              $('#resposta').hide();
+  		    }
   	   });
   	}));
-
-
 var formStatus  = $("form[name='formStatus']");
     formStatus.submit(function(){
       dados = $(this).serialize();
       $.ajax({
-        url: '../../app/controller/post.php',
+        url: '../app/controller/post.php',
         type: 'POST',
         data: dados+"&p=post&action=save",
         beforeSend:'',
         error: '',
         success: function(retorno){
-          alert(retorno);
+          window.location.reload()
         }
     });
     return false;

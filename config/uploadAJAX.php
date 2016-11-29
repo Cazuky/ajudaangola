@@ -14,7 +14,7 @@
     if (move_uploaded_file($foto['tmp_name'], $directorio.$nomeDaFoto )) {
       $sqlFoto= "UPDATE usuarios SET userfoto = '".$nomeDaFoto."' WHERE usuarios.userid=".$_SESSION['sessionUserID'];
       if ($conexao->banco->Execute($sqlFoto)) {
-        echo '<img src="'.$directorio.$nomeDaFoto.'" class="w3-padding-32 w3-show-block" style="float:none; margin: 0 auto" width="100"></img>
+        echo '<img src="libs/images/uploadFoto/'.$nomeDaFoto.'" class="w3-padding-32 w3-show-block" style="float:none; margin: 0 auto" width="100"></img>
               <input type="file" class="w3-hide" name="photo" value="" >';
       }
       else {
