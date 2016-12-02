@@ -23,6 +23,7 @@
 html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 </style>
 <body class="w3-theme-l5">
+  <?php require_once("../config/analyticstracking.php") ?>
 <!-- Navbar -->
 <div class="w3-top">
  <ul class="w3-navbar w3-green w3-left-align w3-large">

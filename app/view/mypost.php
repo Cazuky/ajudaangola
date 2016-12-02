@@ -5,7 +5,7 @@
   <h6><?=  $execucao->register->USERNAME?></h6><br>
   <hr class="w3-clear">
   <p class="w3-xlarge"><?=  $execucao->register->POSTCONTENT?></p>
-  <form action="form.asp" class="">
+  <form action="" class="">
     <div class="w3-row w3-section">
       <div class="w3-col" style="width:50px"><img src="<?= URLBASEFOTO."".$geral->register->USERFOTO?>" class="w3-circle" width="40px" alt=""></i></div>
         <div class="w3-rest">
@@ -14,8 +14,7 @@
         </div>
     </div>
   </form>
-
-  <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i></button>
+  <button  class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i></button>
   <button type="button" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  Comentários</button>
 </div>
 <?php

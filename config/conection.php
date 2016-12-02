@@ -17,6 +17,7 @@ class conexao {
 }
 // condiguration Directory;
 define("URLIMAGE", "../libs/images/");
+
 $con = new conexao();
 
 

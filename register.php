@@ -24,6 +24,7 @@
   </style>
 </head>
 <body id="page" class="backimg">
+  <?php require_once("config/analyticstracking.php") ?>
   <header class="w3-center w3-white w3-top w3-card-2" id="home">
     <h2 class="w3-text-green">Ajuda Angola</h2>
   </header>

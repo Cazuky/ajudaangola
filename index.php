@@ -7,6 +7,8 @@ define('URLIMAGE', 'libs/images/');
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Encontre e exponha dicas sobre as patologias mais frequentes em Angola. Também ajudamos-lhe a encontrar rapidamente os medicamentos para que comece a cumprir a sua medicação mais rápido possivel">
+  <meta name="keywords" content="ajudaangola, ajuda, angola, ajuda angola, saúde, doenças, luanda, paludismo, medicamentos, farmácias, médicos">
   <title>AjudaAngola</title>
   <link rel="shortcut icon" href="favicon.png">
   <link rel="stylesheet" href="libs/css/w3.css" media="all">
@@ -41,6 +43,7 @@ define('URLIMAGE', 'libs/images/');
   </style>
 </head>
 <body id="page" class="backimg">
+  <?php require_once("config/analyticstracking.php") ?>
     <div class="filter backimg">
       <div class="w3-col l3 s12 w3-padding-64" style="float: none; margin: 0 auto">
         <h1 class="w3-center w3-padding-128 w3-text-white">

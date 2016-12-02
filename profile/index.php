@@ -12,7 +12,6 @@
     $geral = new userModel;
     $geral->MyProfile($_SESSION['sessionUserID']);
     $geral->listPosts();
-
  ?>
 <!DOCTYPE html>
 <html>
@@ -88,7 +87,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <br>
     <!-- End Left Column -->
     </div>
-
     <!-- Middle Column -->
     <div class="w3-col m7">
       <div class="w3-row-padding">
@@ -104,11 +102,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
           </div>
         </div>
       </div>
-
     <div class="">
       <?php
         $page = mysql_real_escape_string($_REQUEST['p']);
-        $pages = array("post");
+        $pages = array("post", "comment", "interesse");
         if (in_array($page,$pages)) {
             require_once('../app/controller/'.$page.'.php');
         }
@@ -120,18 +117,21 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
             <h6><?= $geral->postRegister->USERNAME?></h6><br>
             <hr class="w3-clear">
             <p class="w3-xlarge"><?= $geral->postRegister->POSTCONTENT?></p>
-            <form action="form.asp" class="">
+            <form class="" method="post" action="" name="formComment" id="formComment">
               <div class="w3-row w3-section">
-                <div class="w3-col" style="width:50px"><img src="<?= URLBASEFOTO."".$geral->register->USERFOTO?>" class="w3-circle" width="40px" alt=""></i></div>
+                <div class="w3-col" style="width:50px"><img src="<?= URLBASEFOTO."".$geral->postRegister->USERFOTO?>" class="w3-circle" width="40px" alt=""></i></div>
                   <div class="w3-rest">
-                    <input type="hidden" name="" value="">
-                    <input class="w3-input w3-border" name="first" type="text" placeholder="comentar publicação">
+                    <input type="hidden" name="postid" value="<?= $geral->postRegister->POSTID?>">
+                    <input type="hidden" name="userpost" value="<?= $geral->postRegister->USUARIOS_USERID?>">
+                    <input type="hidden" name="usercomment" value="<?= $_SESSION['sessionUserID']?>">
+                    <input type="hidden" name="p" value="comment">
+                    <input type="hidden" name="a" value="save">
+                    <input class="w3-input w3-border" name="content" type="text" placeholder="comentar publicação">
                   </div>
               </div>
             </form>
-
-            <button type="button" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i></button>
-            <button type="button" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  Comentários</button>
+            <a href="?p=interesse&a=save&post=<?= $geral->postRegister->POSTID?>" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i> <span><?= $geral->CountFollowers($geral->postRegister->POSTID)?></span></a>
+            <a href="" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  <span class=""><?= $geral->listComments($geral->postRegister->POSTID)?></span></a>
           </div>
         <?php
         endwhile;
@@ -154,19 +154,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <br>
     <!-- End Right Column -->
     </div>
-
   <!-- End Grid -->
   </div>
-
 <!-- End Page Container -->
 </div>
 <br>
-
 <!-- Footer -->
 <footer class="w3-container w3-bottom w3-card-2 w3-white">
-  <p>Powered by <a href="" target="_blank">Venus Dev. INC, &copy; <?= date("Y")?></a></p>
+  <p>Powered by <a href="" target="_blank" class="">CMGT-TECNOLOGIES LDA, &copy; <?= date("Y")?></a></p>
 </footer>
-
 <script>
 // Accordion
 function myFunction(id) {
@@ -180,7 +176,6 @@ function myFunction(id) {
         x.previousElementSibling.className.replace(" w3-theme-d1", "");
     }
 }
-
 // Used to toggle the menu on smaller screens when clicking on the menu button
 function openNav() {
     var x = document.getElementById("navDemo");

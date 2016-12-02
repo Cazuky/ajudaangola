@@ -28,6 +28,7 @@ if (isset($_SESSION['sessionUserID']) && !empty($_SESSION['sessionUserID'])) {
   </style>
 </head>
 <body id="page" class="backimg">
+  <?php require_once("config/analyticstracking.php") ?>
   <header class="w3-center w3-white w3-top w3-card-2" id="home">
     <a href="index.php" class="w3-left"><i class="fa fa-home fa-2x w3-margin"></i></a><h2 class="w3-text-green">Ajuda Angola</h2>
   </header>

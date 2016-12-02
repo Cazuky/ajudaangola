@@ -1,4 +1,7 @@
 <?php
+function voltar($myurl){
+	print '<script type="text/javascript">window.top.location.href = "'. $myurl .'";</script>';
+};
 function TimeRegister ($signupdate){
   $time = explode("-", $signupdate);
   $signupYear = $time[0];
