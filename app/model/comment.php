@@ -21,6 +21,19 @@ class  commentModel {
       return false;
     }
   }
+  function CurrentPost($postid){
+    $sql = "SELECT posts.*, usuarios.* FROM posts JOIN usuarios
+            ON posts.usuarios_userid = usuarios.userid WHERE posts.postid = $postid";
+    $this->resultado = $this->con->banco->Execute($sql);
+    $this->register = $this->resultado->FetchNextObject();
+  }
+  function showComment($comment){
+    $sql = "SELECT usuarios.*, comentarios.* FROM comentarios
+            JOIN usuarios ON usuarios.userid = comentarios.usuarios_userid
+            WHERE comentarios.publicacoes_pubid = $comment ORDER BY comentarios.comid DESC";
+    $this->resultado = $this->con->banco->Execute($sql);
+  }
+
 
 }
 

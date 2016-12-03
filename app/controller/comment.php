@@ -3,10 +3,10 @@ session_start();
 require_once("../app/model/comment.php");
 $action = mysql_real_escape_string($_REQUEST['a']);
 $user = $_SESSION['sessionUserID'];
+$comment = mysql_real_escape_string($_REQUEST['post']);
 $execucao = new commentModel;
 
 if ($action=="save"){
-	print_r($_POST);
 	 $c['usuarios_userid'] = mysql_real_escape_string($_POST['usercomment']);
 	$c['publicacoes_pubid'] = mysql_real_escape_string($_POST['postid']);
 	 $c['publicacoes_usuarios_userid']  = mysql_real_escape_string($_POST['userpost']);
@@ -26,7 +26,6 @@ if ($action =="register") {
     $c['userpassword'] = md5(mysql_real_escape_string($_POST['password']));
     $c['userphone'] = mysql_real_escape_string($_POST['phone']);
     $campos = implode(',', array_keys($c));
-    //print_r($c);
     $valores = '"'.implode('","', array_values($c)).'"';
     $execucao->register($campos, $valores);
 }
@@ -34,6 +33,9 @@ if ($action=="mypost") {
 	$execucao->myPost($user);
 	require_once("../app/view/mypost.php");
 }
-
+if ($action=="show") {
+	$execucao->showComment($comment);
+	require_once("../app/view/comentarios.php");
+}
 
  ?>

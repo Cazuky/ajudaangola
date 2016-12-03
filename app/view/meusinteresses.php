@@ -5,7 +5,7 @@ if ($execucao->resultado->numRows() == 0) {
  while($execucao->register = $execucao->resultado->FetchNextObject()): ?>
 <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
   <img src="<?= URLBASEFOTO."". $execucao->register->USERFOTO?>" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-  <span class="w3-right w3-opacity"><a href="?p=post&a=delete&id=<?=  $execucao->register->POSTID?>"><i class="fa fa-trash"></i></a></span>
+  <span class="w3-right w3-opacity"><?= TimeRegister( $execucao->register->POSTDATA)?></span>
   <h6><?=  $execucao->register->USERNAME?></h6><br>
   <hr class="w3-clear">
   <p class="w3-xlarge"><?=  $execucao->register->POSTCONTENT?></p>
@@ -18,8 +18,6 @@ if ($execucao->resultado->numRows() == 0) {
         </div>
     </div>
   </form>
-  <button  class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i></button>
-  <button type="button" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  Comentários</button>
 </div>
 <?php
 endwhile;

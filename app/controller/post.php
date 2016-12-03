@@ -26,6 +26,12 @@ if ($action=="mypost") {
 	$execucao->myPost($user);
 	require_once("../app/view/mypost.php");
 }
+if ($action=="delete") {
+	$idpost = mysql_real_escape_string($_REQUEST['id']);
+	$execucao->deletePost($idpost);
+	$execucao->myPost($user);
+	require_once("../app/view/mypost.php");
+}
 
 
  ?>

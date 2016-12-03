@@ -80,9 +80,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <!-- Accordion -->
       <span class="w3-opacity"><b>Meus Feeds</b></span>
       <div class="w3-card-2 w3-round">
-          -<a href="" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus interesses</a>
+          -<a href="?p=interesse&a=meusinteresses" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> Meus interesses</a>
           <a href=""  class="w3-btn-block w3-white w3-left-align"><i class="fa fa-comment fa-fw w3-margin-right"></i> Últimos comentários</a>
-          <a href="?p=post&a=mypost" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-list fa-fw w3-margin-right"></i> Ultimos posts</a>
+          <a href="?p=post&a=mypost" class="w3-btn-block w3-white w3-theme-l1 w3-left-align"><i class="fa fa-list fa-fw w3-margin-right"></i> Meus posts</a>
       </div>
       <br>
     <!-- End Left Column -->
@@ -131,7 +131,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
               </div>
             </form>
             <a href="?p=interesse&a=save&post=<?= $geral->postRegister->POSTID?>" class="w3-btn w3-theme-d1 w3-margin-bottom"><i class="fa fa-circle-o-notch"></i> <span><?= $geral->CountFollowers($geral->postRegister->POSTID)?></span></a>
-            <a href="" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  <span class=""><?= $geral->listComments($geral->postRegister->POSTID)?></span></a>
+            <a href="?p=comment&a=show&post=<?= $geral->postRegister->POSTID?>" class="w3-btn w3-green w3-margin-bottom"><i class="fa fa-comment"></i>  <span class=""><?= $geral->listComments($geral->postRegister->POSTID)?></span></a>
           </div>
         <?php
         endwhile;
@@ -148,8 +148,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
         </div>
       </div>
       <br>
-      <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center">
-        <p>ADS</p>
+      <div class="w3-card-2 w3-round w3-white w3-padding-16 w3-center w3-hide-small">
+        <script type="text/javascript">
+  var bannersnack_embed = {"hash":"bx9qo3jjo","width":120,"height":600,"t":1480658500,"userId":26528151,"type":"html5"};
+  </script>
+  <script type="text/javascript" src="//cdn.bannersnack.com/iframe/embed.js"></script>
       </div>
       <br>
     <!-- End Right Column -->

@@ -16,7 +16,7 @@ class  userModel {
   }
   function listPosts(){
     $sql = "SELECT posts.*, usuarios.* FROM posts JOIN usuarios
-            ON posts.usuarios_userid = usuarios.userid ORDER BY posts.postid DESC";
+            ON posts.usuarios_userid = usuarios.userid WHERE posts.poststatus = 1 ORDER BY posts.postid DESC";
     $this->resultado = $this->con->banco->Execute($sql);
   }
   function listComments($post){
